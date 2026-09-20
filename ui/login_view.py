@@ -1,36 +1,37 @@
 import tkinter as tk
+from tkinter import messagebox
+from servicios.restaurante import RestauranteServicio
 from ui.main_view import MainView
 
-class LoginView:
-    def __init__(self, root, restaurante, servicio):
-        self.root = root
-        self.restaurante = restaurante
-        self.servicio = servicio
+class LoginView(tk.Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.servicio = RestauranteServicio()
+        self.pack(fill="both", expand=True)
+        self.crear_componentes()
 
-        self.frame = tk.Frame(self.root)
-        self.frame.pack(fill="both", expand=True)
+    def crear_componentes(self):
+        # Etiquetas y entradas
+        tk.Label(self, text="Usuario (ID):").grid(row=0, column=0, pady=5, sticky="w")
+        self.entry_usuario = tk.Entry(self)
+        self.entry_usuario.grid(row=0, column=1, pady=5)
 
-        tk.Label(self.frame, text="Iniciar sesión", font=("Arial", 14, "bold")).pack(pady=10)
+        tk.Label(self, text="Clave:").grid(row=1, column=0, pady=5, sticky="w")
+        self.entry_clave = tk.Entry(self, show="*")
+        self.entry_clave.grid(row=1, column=1, pady=5)
 
-        tk.Label(self.frame, text="Usuario (ID):").pack()
-        self.usuario_entry = tk.Entry(self.frame)
-        self.usuario_entry.pack()
+        # Boton de ingreso
+        btn_ingresar = tk.Button(self, text="Ingresar", command=self.validar_login)
+        btn_ingresar.grid(row=2, column=0, columnspan=2, pady=10)
 
-        tk.Label(self.frame, text="Clave:").pack()
-        self.clave_entry = tk.Entry(self.frame, show="*")
-        self.clave_entry.pack()
+    def validar_login(self):
+        identificacion = self.entry_usuario.get()
+        clave = self.entry_clave.get()
 
-        tk.Button(self.frame, text="Ingresar", command=self.login).pack(pady=10)
-
-        self.error_label = tk.Label(self.frame, text="", fg="red")
-        self.error_label.pack()
-
-    def login(self):
-        usuario = self.usuario_entry.get().strip()
-        clave = self.clave_entry.get().strip()
-
-        if self.restaurante.validar_acceso(usuario, clave):
-            self.frame.destroy()
-            MainView(self.root, self.restaurante, self.servicio)
+        if self.servicio.validar_acceso(identificacion, clave):
+            # Si el login es correcto, abrir MainView
+            self.destroy()
+            MainView(self.master)
         else:
-            self.error_label.config(text="Usuario o clave incorrectos")
+            messagebox.showerror("Error", "Usuario o clave incorrectos")

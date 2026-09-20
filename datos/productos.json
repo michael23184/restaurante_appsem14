@@ -1,14 +1,20 @@
 [
     {
-        "_codigo": "P001",
-        "_nombre": "Hamburguesa",
-        "_precio": 5.0,
-        "_stock": 8
+        "id": "P001",
+        "nombre": "Hamburguesa Clasica",
+        "precio": "3.50",
+        "cantidad": "20"
     },
     {
-        "_codigo": "P002",
-        "_nombre": "Pizza",
-        "_precio": 8.5,
-        "_stock": 5
+        "id": "P002",
+        "nombre": "Pizza Margarita",
+        "precio": "5.00",
+        "cantidad": "15"
+    },
+    {
+        "id": "P003",
+        "nombre": "Ensalada Cesar",
+        "precio": "4.00",
+        "cantidad": "10"
     }
 ]

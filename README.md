@@ -1,26 +1,29 @@
-# Restaurante App - Semana 13
+# Restaurante App - Semana 14
 
-Proyecto académico de la carrera TIC.  
-Aplicación en **Python** que gestiona productos, usuarios y ventas de un restaurante, ahora con **interfaz gráfica (Tkinter)**.
+## 📌 Contexto
+Este proyecto corresponde a la Semana 14 de la asignatura **Programación Orientada a Objetos**.  
+El objetivo es evolucionar la aplicación **restaurante_app** integrando **componentes y contenedores de Tkinter**, manteniendo la arquitectura modular y la persistencia en archivos JSON.
 
----
+## 🎯 Objetivo de la Semana 14
+- Mejorar la interfaz gráfica utilizando **Frames, formularios y tablas**.  
+- Separar correctamente las zonas de navegación, formulario y visualización.  
+- Implementar operaciones CRUD sobre productos (Registrar, Consultar, Actualizar, Eliminar).  
+- Mantener la lógica de negocio en `RestauranteServicio` y no en la interfaz.  
+- Conservar la persistencia en `productos.json`.  
+- Mostrar resultados claros en la interfaz después de cada operación.  
 
-## 📂 Estructura del proyecto
-
-restaurante_appsem13/
+## 🗂️ Estructura del proyecto
+restaurante_app/
 ├── datos/
 │   ├── productos.json
-│   ├── usuarios.json
-│   └── ventas.json
+│   └── usuarios.json
 ├── modelos/
 │   ├── producto.py
-│   ├── usuario.py
-│   └── venta.py
+│   └── usuario.py
 ├── servicios/
 │   ├── archivo_servicio.py
-│   └── restaurante_servicio.py
+│   └── restaurante.py
 ├── ui/
-│   ├── init.py
 │   ├── login_view.py
 │   └── main_view.py
 ├── main.py
@@ -28,39 +31,40 @@ restaurante_appsem13/
 
 Código
 
----
+## ⚙️ Flujo funcional esperado
+1. Inicio de la aplicación (`main.py`).  
+2. Login con usuario y clave (`login_view.py`).  
+3. Validación mediante `RestauranteServicio`.  
+4. Acceso a la interfaz principal (`main_view.py`).  
+5. Sección **Usuarios** → consulta de información.  
+6. Sección **Productos** → formulario + acciones CRUD.  
+7. Persistencia en `productos.json`.  
+8. Actualización de la interfaz después de cada operación.  
 
-## ⚙️ Requisitos
+## ✅ Comprobación mínima
+- La aplicación inicia sin errores.  
+- El login funciona correctamente con usuario y clave.  
+- La interfaz principal se muestra después del acceso.  
+- La sección de Usuarios permite consultar información.  
+- La sección de Productos permite registrar, consultar, actualizar y eliminar.  
+- Los cambios se guardan en `productos.json` y se muestran en la interfaz.  
 
-- Python 3.10 o superior  
-- Librería estándar `tkinter` (incluida en Python)  
+## 📌 Mejoras realizadas en Semana 14
+- Se agregó el atributo **clave** al modelo `Usuario` y al archivo `usuarios.json`.  
+- Se corrigió la validación de login.  
+- Se configuró el tamaño inicial de la ventana.  
+- Se implementaron **contenedores (Frames)** en `main_view.py` para separar navegación, formulario y visualización.  
+- Se incorporó un **formulario de productos** con campos y botones.  
+- Se agregó una **tabla (Treeview)** para mostrar productos.  
+- Se implementaron las operaciones CRUD en `RestauranteServicio`.  
+- Se actualizó `productos.json` con datos iniciales de prueba.  
 
----
+## 🚀 Ejecución
+1. Clonar el repositorio.  
+2. Abrir la carpeta en VS Code.  
+3. Ejecutar el archivo `main.py`:  
+   ```bash
+   python main.py
+4. Ingresar con un usuario válido (ejemplo: ID U001, clave 1234).
 
-## ▶️ Ejecución
-
-1. Clonar el repositorio o descargar la carpeta del proyecto.  
-2. Asegurarse de que los archivos JSON estén en la carpeta `datos/`.  
-3. Ejecutar el archivo principal:
-
-```bash
-python main.py
-🖥️ Funcionamiento
-LoginView: Pantalla inicial de acceso.
-
-MainView: Muestra usuarios y productos registrados.
-
-Servicios: Manejan lectura/escritura de datos en JSON.
-
-Modelos: Definen las clases Producto, Usuario y Venta.
-
-📌 Notas
-Los datos se guardan en formato JSON dentro de la carpeta datos/.
-
-El sistema permite registrar productos, usuarios y ventas.
-
-La interfaz gráfica reemplaza el menú por consola de semanas anteriores.
-
-👨‍💻 Autor
-Michael Heras  
-Segundo semestre - Carrera TIC
+5. Navegar por las secciones de Usuarios y Productos.

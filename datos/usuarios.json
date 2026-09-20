@@ -1,12 +1,14 @@
 [
-  {
-    "identificacion": "U001",
-    "nombre": "Michael",
-    "correo": "michael@correo.com"
-  },
-  {
-    "identificacion": "U002",
-    "nombre": "Ana",
-    "correo": "ana@correo.com"
-  }
+    {
+        "identificacion": "U001",
+        "nombre": "Michael",
+        "correo": "michael@correo.com",
+        "clave": "1234"
+    },
+    {
+        "identificacion": "U002",
+        "nombre": "Ana",
+        "correo": "ana@correo.com",
+        "clave": "abcd"
+    }
 ]
