@@ -1,70 +1,66 @@
-# Restaurante App - Semana 14
+# Restaurante App
 
-## 📌 Contexto
-Este proyecto corresponde a la Semana 14 de la asignatura **Programación Orientada a Objetos**.  
-El objetivo es evolucionar la aplicación **restaurante_app** integrando **componentes y contenedores de Tkinter**, manteniendo la arquitectura modular y la persistencia en archivos JSON.
+Aplicación de gestión para restaurante desarrollada en **Python**, organizada con arquitectura modular (Modelos, Servicios, UI y Datos).  
+Este sistema permite iniciar sesión con **correo + clave** y acceder a una ventana principal con opciones de gestión.
 
-## 🎯 Objetivo de la Semana 14
-- Mejorar la interfaz gráfica utilizando **Frames, formularios y tablas**.  
-- Separar correctamente las zonas de navegación, formulario y visualización.  
-- Implementar operaciones CRUD sobre productos (Registrar, Consultar, Actualizar, Eliminar).  
-- Mantener la lógica de negocio en `RestauranteServicio` y no en la interfaz.  
-- Conservar la persistencia en `productos.json`.  
-- Mostrar resultados claros en la interfaz después de cada operación.  
+---
 
-## 🗂️ Estructura del proyecto
-restaurante_app/
-├── datos/
-│   ├── productos.json
-│   └── usuarios.json
-├── modelos/
-│   ├── producto.py
-│   └── usuario.py
-├── servicios/
-│   ├── archivo_servicio.py
-│   └── restaurante.py
-├── ui/
-│   ├── login_view.py
-│   └── main_view.py
-├── main.py
-└── README.md
+## Ejecución
+
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/michael23184/restaurante_appsem14.git
+Entrar en la carpeta del proyecto:
+
+bash
+cd restaurante_appsem14
+Ejecutar el sistema:
+
+bash
+python main.py
+ Credenciales de prueba
+Correo: michael@correo.com
+
+Clave: 1234
+
+ Estructura del proyecto
+modelos/ → clases principales (usuario.py, producto.py, venta.py)
+
+servicios/ → lógica de negocio (auth_service.py, restaurante.py, etc.)
+
+ui/ → interfaces gráficas (login_view.py, main_view.py)
+
+datos/ → archivos JSON (usuarios.json, productos.json, ventas.json)
+
+Funcionalidades
+Login con correo + clave.
+
+Ventana principal con opciones:
+
+Gestión de productos
+
+Gestión de ventas
+
+Gestión de usuarios
+
+Arquitectura clara y modular, lista para ampliarse.
+
+📌 Tecnologías utilizadas
+Python 3.x
+
+Tkinter (interfaz gráfica)
+
+JSON (persistencia de datos)
+
+Git/GitHub (control de versiones y repositorio)
+
+📖 Notas
+Este proyecto está diseñado como práctica académica para aplicar conceptos de:
+
+Programación orientada a objetos (POO).
+
+Manejo de archivos JSON.
+
+Separación de capas: modelo, servicio, interfaz.
 
 Código
-
-## ⚙️ Flujo funcional esperado
-1. Inicio de la aplicación (`main.py`).  
-2. Login con usuario y clave (`login_view.py`).  
-3. Validación mediante `RestauranteServicio`.  
-4. Acceso a la interfaz principal (`main_view.py`).  
-5. Sección **Usuarios** → consulta de información.  
-6. Sección **Productos** → formulario + acciones CRUD.  
-7. Persistencia en `productos.json`.  
-8. Actualización de la interfaz después de cada operación.  
-
-## ✅ Comprobación mínima
-- La aplicación inicia sin errores.  
-- El login funciona correctamente con usuario y clave.  
-- La interfaz principal se muestra después del acceso.  
-- La sección de Usuarios permite consultar información.  
-- La sección de Productos permite registrar, consultar, actualizar y eliminar.  
-- Los cambios se guardan en `productos.json` y se muestran en la interfaz.  
-
-## 📌 Mejoras realizadas en Semana 14
-- Se agregó el atributo **clave** al modelo `Usuario` y al archivo `usuarios.json`.  
-- Se corrigió la validación de login.  
-- Se configuró el tamaño inicial de la ventana.  
-- Se implementaron **contenedores (Frames)** en `main_view.py` para separar navegación, formulario y visualización.  
-- Se incorporó un **formulario de productos** con campos y botones.  
-- Se agregó una **tabla (Treeview)** para mostrar productos.  
-- Se implementaron las operaciones CRUD en `RestauranteServicio`.  
-- Se actualizó `productos.json` con datos iniciales de prueba.  
-
-## 🚀 Ejecución
-1. Clonar el repositorio.  
-2. Abrir la carpeta en VS Code.  
-3. Ejecutar el archivo `main.py`:  
-   ```bash
-   python main.py
-4. Ingresar con un usuario válido (ejemplo: ID U001, clave 1234).
-
-5. Navegar por las secciones de Usuarios y Productos.
