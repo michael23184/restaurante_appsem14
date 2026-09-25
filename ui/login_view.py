@@ -1,37 +1,44 @@
 import tkinter as tk
 from tkinter import messagebox
-from servicios.restaurante import RestauranteServicio
+from servicios.auth_service import AuthService
 from ui.main_view import MainView
 
-class LoginView(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.master = master
-        self.servicio = RestauranteServicio()
-        self.pack(fill="both", expand=True)
-        self.crear_componentes()
+class LoginView:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Restaurante App - Login")
+        self.auth_service = AuthService()
 
-    def crear_componentes(self):
-        # Etiquetas y entradas
-        tk.Label(self, text="Usuario (ID):").grid(row=0, column=0, pady=5, sticky="w")
-        self.entry_usuario = tk.Entry(self)
-        self.entry_usuario.grid(row=0, column=1, pady=5)
+        # Etiquetas y campos
+        tk.Label(root, text="Correo:").grid(row=0, column=0, padx=10, pady=10)
+        self.entry_correo = tk.Entry(root)
+        self.entry_correo.grid(row=0, column=1, padx=10, pady=10)
 
-        tk.Label(self, text="Clave:").grid(row=1, column=0, pady=5, sticky="w")
-        self.entry_clave = tk.Entry(self, show="*")
-        self.entry_clave.grid(row=1, column=1, pady=5)
+        tk.Label(root, text="Clave:").grid(row=1, column=0, padx=10, pady=10)
+        self.entry_clave = tk.Entry(root, show="*")
+        self.entry_clave.grid(row=1, column=1, padx=10, pady=10)
 
-        # Boton de ingreso
-        btn_ingresar = tk.Button(self, text="Ingresar", command=self.validar_login)
-        btn_ingresar.grid(row=2, column=0, columnspan=2, pady=10)
+        # Botón ingresar
+        tk.Button(root, text="Ingresar", command=self.login).grid(row=2, column=0, columnspan=2, pady=10)
 
-    def validar_login(self):
-        identificacion = self.entry_usuario.get()
+    def login(self):
+        correo = self.entry_correo.get()
         clave = self.entry_clave.get()
+        valido, usuario = self.auth_service.validar_acceso(correo, clave)
 
-        if self.servicio.validar_acceso(identificacion, clave):
-            # Si el login es correcto, abrir MainView
-            self.destroy()
-            MainView(self.master)
+        if valido:
+            messagebox.showinfo("Acceso permitido", f"Bienvenido {usuario.nombre}")
+            self.root.destroy()  # Cierra la ventana de login
+
+            # Abre la ventana principal
+            main_root = tk.Tk()
+            MainView(main_root, usuario)
+            main_root.mainloop()
         else:
             messagebox.showerror("Error", "Usuario o clave incorrectos")
+
+# Punto de entrada para pruebas rápidas
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = LoginView(root)
+    root.mainloop()
