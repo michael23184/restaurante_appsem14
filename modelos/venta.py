@@ -1,17 +1,16 @@
+from datetime import date
+
 class Venta:
-    def __init__(self, usuario, producto, cantidad: int):
-        self.usuario_id = usuario.identificacion
-        self.producto_codigo = producto.codigo
-        self.cantidad = cantidad
-        self.total = producto.precio * cantidad
+    def __init__(self, identificador, usuario_id, producto_id, fecha=None):
+        self.identificador = identificador
+        self.usuario_id = usuario_id
+        self.producto_id = producto_id
+        self.fecha = fecha if fecha else date.today().isoformat()
 
     def to_dict(self):
         return {
+            "identificador": self.identificador,
             "usuario_id": self.usuario_id,
-            "producto_codigo": self.producto_codigo,
-            "cantidad": self.cantidad,
-            "total": self.total
+            "producto_id": self.producto_id,
+            "fecha": self.fecha
         }
-
-    def __str__(self):
-        return f"Venta: Usuario {self.usuario_id}, Producto {self.producto_codigo}, Cantidad {self.cantidad}, Total {self.total}"

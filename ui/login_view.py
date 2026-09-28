@@ -18,7 +18,7 @@ class LoginView:
         self.entry_clave = tk.Entry(root, show="*")
         self.entry_clave.grid(row=1, column=1, padx=10, pady=10)
 
-        # Botón ingresar
+        # Boton ingresar
         tk.Button(root, text="Ingresar", command=self.login).grid(row=2, column=0, columnspan=2, pady=10)
 
     def login(self):
@@ -28,17 +28,9 @@ class LoginView:
 
         if valido:
             messagebox.showinfo("Acceso permitido", f"Bienvenido {usuario.nombre}")
-            self.root.destroy()  # Cierra la ventana de login
-
-            # Abre la ventana principal
+            self.root.destroy()
             main_root = tk.Tk()
             MainView(main_root, usuario)
             main_root.mainloop()
         else:
             messagebox.showerror("Error", "Usuario o clave incorrectos")
-
-# Punto de entrada para pruebas rápidas
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = LoginView(root)
-    root.mainloop()

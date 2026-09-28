@@ -2,19 +2,19 @@
     {
         "id": "P001",
         "nombre": "Hamburguesa Clasica",
-        "precio": "3.50",
-        "cantidad": "20"
+        "precio": 3.50,
+        "cantidad": 20
     },
     {
         "id": "P002",
         "nombre": "Pizza Margarita",
-        "precio": "5.00",
-        "cantidad": "15"
+        "precio": 5.00,
+        "cantidad": 15
     },
     {
         "id": "P003",
         "nombre": "Ensalada Cesar",
-        "precio": "4.00",
-        "cantidad": "10"
+        "precio": 4.00,
+        "cantidad": 10
     }
 ]
